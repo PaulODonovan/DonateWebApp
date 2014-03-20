@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Make A Difference Today</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+<script src="//jqueryui.com/resources/demos/external/jquery.mousewheel.js"></script>
+
+<script src="//jqueryui.com/resources/demos/external/globalize.js"></script>
+<script src="//jqueryui.com/resources/demos/external/globalize.culture.de-DE.js"></script>
+<script src="//jqueryui.com/resources/demos/external/globalize.culture.ja-JP.js"></script>
+<link rel="stylesheet" href="css/css.css">
+<script src="js/donate.js"></script>
+</head>
+<body>
+<section id="donate">
+	<article id="controls">
+		<h1>Make A Difference Today</h1>
+		<div id="spin">
+			<p>
+			  <label for="currency">Currency to donate</label>
+			  <select id="currency" name="currency">
+				<option value="de-DE">EUR €</option>
+				<option value="en-US">US $</option>
+				<option value="ja-JP">YEN ¥</option>
+			  </select>
+			</p>
+			<p>
+			  <label for="spinners">Amount to donate:</label>
+			  <input type="text" id="spinners" name="spinners" value="0">
+			</p>
+		</div>
+		<div id="range" class="range" name="range" value="0">
+			<!--handle and fill get dynamically inserted here-->
+		</div>
+	</article>
+	
+	<article id="waterTanks" class="project">
+		<h2>Rainwater Harvesting Tanks</h2>
+		<div id="progressBar1" class="progressBar">
+			<div id="waterTanksFill" class="progressBarFill">
+			</div>
+		</div>
+		<span id="waterTanksOutput" class="output">0
+		</span>
+	</article>
+	
+	<article id="school" class="project">
+		<h2>Girls Secondary School</h2>
+		<div class="progressBar">
+			<div id="schoolFill" class="progressBarFill">
+			</div>
+		</div>
+		<span id="schoolOutput" class="output">0
+		</span>
+	</article>
+	
+	<article id="agriculture" class="project">
+		<h2>Agriculture and Environmental Conservation</h2>
+		<div class="progressBar">
+			<div id="agricultureFill" class="progressBarFill">
+			</div>
+		</div>
+		<span id="agricultureOutput" class="output">0
+		</span>
+	</article>
+	
+	<article id="needyChildren" class="project">
+		<h2>Needy Children Program</h2>
+		<div id="progressBar1" class="progressBar">
+			<div id="needyChildrenFill" class="progressBarFill">
+			</div>
+		</div>
+		<span id="needyChildrenOutput" class="output">0
+		</span>
+	</article>
+	
+	<article id="food" class="project">
+		<h2>Food & Seed Store</h2>
+		<div class="progressBar">
+			<div id="foodFill" class="progressBarFill">
+			</div>
+		</div>
+		<span id="foodOutput" class="output">0
+		</span>
+	</article>
+	
+</section>
+</body>
+</html>
