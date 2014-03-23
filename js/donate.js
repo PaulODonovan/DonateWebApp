@@ -1,6 +1,5 @@
-﻿// 
-$(function () {
-	parsedRange = 0,
+﻿$(function () {
+	var parsedRange = 0,
 	donation = 0,
 	projects = document.getElementsByClassName("project"),
 	ration = 0,
@@ -20,54 +19,53 @@ $(function () {
 	
 	// handle typed / pasted input
 	document.getElementById("spinners").oninput = function () {
-	console.log("manual input detected");
-	console.log("this: " + this.value);
-	var manual = parseInt(this.value);
-	getFibonacci(manual);
+		// console.log("manual input detected");
+		// console.log("this: " + this.value);
+		var manual = parseInt(this.value);
+		getFibonacci(manual);
 	}
 	
 	// initiate currency symbols
-    $("#currency").change(function () {
-        $("#spinners").spinner("option", "culture", $(this).val());
+	$("#currency").change(function () {
+		$("#spinners").spinner("option", "culture", $(this).val());
 		curr = this.value;
 
-		// A little trick to trigger live currency symbols updates for outputs :) Looking out for a better way.
+		// A little trick to trigger live currency symbol updates for outputs :) Looking out for a better way.
 		$( "#spinners" ).spinner( "stepUp", 1 );
 		$( "#spinners" ).spinner( "stepUp", -1 );
-    });
+	});
 	
     //Spinner
-    $("#spinners").spinner({
+	$("#spinners").spinner({
 		culture: "de-DE",
-        min: 0,
-        max: 100000,
-        step: 1,
-        start: 0,
-        numberFormat: "C",
-        spin: function (event, ui) {
-			console.log("Spinner Triggered");
+		min: 0,
+		max: 100000,
+		step: 1,
+		start: 0,
+		numberFormat: "C",
+		spin: function (event, ui) {
+			// console.log("Spinner Triggered");
 			getFibonacci(ui.value);
 			
-            // Spinner speak to range slider
-            $("#range").slider("value", ui.value);
+			// Spinner speak to range slider
+			$("#range").slider("value", ui.value);
+		}
+	});
 
-        }
-    });
-
-    //Range Slider		
-    $("#range").slider({
-        min: 0,
-        max: 100,
-        step: 1,
-        start: 0,
+	//Range Slider		
+	$("#range").slider({
+		min: 0,
+		max: 100,
+		step: 1,
+		start: 0,
 		range: "min",
-        slide: function (event, ui) {
-			console.log("Slider Triggered");
+		slide: function (event, ui) {
+			// console.log("Slider Triggered");
 			getFibonacci(ui.value);
-            // Slider bump spinner values
-            $("#spinners").spinner("value", ui.value);         
-        }
-    });
+			// Slider bump spinner values
+			$("#spinners").spinner("value", ui.value);         
+		}
+	});
 	
 	// applies the appropriate Fibonacci ration, then calls updateSomeProject()
 	function getFibonacci (value) {
@@ -84,9 +82,9 @@ $(function () {
 				case "agriculture": ration = ration3;
 				updateSomeProject(ration, value, projectId);
 					break;
-				case "needyChildren": ration = ration4;
+				case "underprivilegedChildren": ration = ration4;
 				updateSomeProject(ration, value, projectId);
-					break
+					break;
 				case "food": ration = ration5;
 				updateSomeProject(ration, value, projectId);
 					break;
@@ -100,9 +98,8 @@ $(function () {
 	
 	function updateSomeProject (ration, value, projectId) { // this calculates the width of fills & the value for project outputs based on donation value, exchange rates and Fibonacci ration for that project
 		donation = value;
-		console.log("donation: " + donation);
+		// console.log("donation: " + donation);
 		ration = ration / fibonacciTotal;
-		
 		var newValue = value * ration;
 		
 		// update output 
@@ -124,12 +121,10 @@ $(function () {
 				$("#range").slider( "option", "max", euroMax);
 				break;
 		}
-		
 		// calculate width for fills
 		var newWidth = donation * ration + '%';
 		// update progress bar fills
 		$( "#" + projectId + " div div.progressBarFill").css( "width", newWidth);
-		console.log(projectId + " says newWidth: " + newWidth);	
-		
+		// console.log(projectId + " says newWidth: " + newWidth);	
 	}
 });
