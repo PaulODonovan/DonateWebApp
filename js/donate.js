@@ -3,7 +3,7 @@
 	donation = 0,
 	projects = document.getElementsByClassName("project"),
 	ration = 0,
-	curr = "",
+	culture = "de-DE",
 	dollar = 1.39, // €1 = $1.39
 	dollarMax = dollar * 100,
 	yen = 140.99, // €1 = 140.99Y
@@ -17,24 +17,32 @@
 	ration5 = 5,
 	fibonacciTotal = ration1 + ration2 + ration3 + ration4 + ration5;
 	
-	// handle typed / pasted input
-	document.getElementById("spinners").oninput = function () {
-		// console.log("manual input detected");
-		// console.log("this: " + this.value);
-		var manual = parseInt(this.value);
-		getFibonacci(manual);
-	}
 	
 	// initiate currency symbols
 	$("#currency").change(function () {
 		$("#spinners").spinner("option", "culture", $(this).val());
-		curr = this.value;
-
-		// A little trick to trigger live currency symbol updates for outputs :) Looking out for a better way.
+		culture = this.value;
+		// A little trick to update currency symbols by triggering change on spinner. Looking out for a better way.
 		$( "#spinners" ).spinner( "stepUp", 1 );
 		$( "#spinners" ).spinner( "stepUp", -1 );
+		
+		// set globalize.js culture
+		Globalize.culture(culture);
 	});
 	
+	// event listener for typed input
+	var spin = document.getElementById("spinners");
+	spin.addEventListener('keyup', function() { 
+		var parse = this.value;
+		//console.log("parse: " + parse);
+		Globalize.culture(culture);
+		var manual = Globalize.parseFloat(Globalize.format(parse, 10, "c"));
+		getFibonacci(manual);
+		// Typed Spinner speak to range slider
+		$("#range").slider("value", manual);
+		
+	}, false);
+
     //Spinner
 	$("#spinners").spinner({
 		culture: "de-DE",
@@ -103,7 +111,7 @@
 		var newValue = value * ration;
 		
 		// update output 
-		switch (curr) {
+		switch (culture) {
 			case "en-US":
 				// Reflect exchange rates relative to default: € 
 				donation = donation / dollar;
@@ -117,7 +125,7 @@
 				$("#range").slider( "option", "max", yenMax);
 				break;
 			default:
-				$( "#" + projectId + " .output" ).html("€" + newValue.toFixed(2));
+				$( "#" + projectId + " .output" ).html(newValue.toFixed(2) + "€");
 				$("#range").slider( "option", "max", euroMax);
 				break;
 		}
