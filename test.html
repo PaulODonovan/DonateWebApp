@@ -1,22 +1,46 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
 	<meta charset="UTF-8">
 	<title>Test Project</title>
+
+	<link rel="stylesheet" href="vendor/powerange/powerange.css">
+	<style>
+		body {
+			margin: 50px;
+		}
+
+		li + li {
+			margin-top: 50px;
+		}
+
+		.Bar {
+			background: #eee;
+		}
+
+		.BarFill {
+			background: green;
+			height: 5px;
+		}
+	</style>
 </head>
 <body>
-	<script src="js/model/project.js"></script>
+	<div ng-controller="DonationCtrl">
+		<ul>
+			<li ng-repeat="project in projects">
+				<slider project="project" ></slider>
+			</li>
+		</ul>
+		<ul>
+			<li ng-repeat="project in projects">
+				<input type="number" ng-model="project.amount">
+				<progress-bar project="project" ></progress-bar>
+			</li>
+		</ul>
+	</div>
 
-	<script>
-	(function() {
-		var p1 = new Project ("Rainwater Harvesting Tanks", 1000);
-		console.log(p1);
-
-		var p2 = new Project ("Girls Secondary School", 1000, 200, 0.5);
-		console.log(p2);
-
-
-	})();
-	</script>
+	<script src="vendor/powerange/powerange.js"></script>
+	<script src="vendor/angular.js"></script>
+	<script src="js/slider.js"></script>
 </body>
 </html>
