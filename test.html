@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Test Project</title>
+
+	<link rel="stylesheet" href="vendor/powerange/powerange.css">
+	<style>
+		body {
+			margin: 50px;
+		}
+
+		li + li {
+			margin-top: 50px;
+		}
+
+		.Bar {
+			background: #eee;
+		}
+
+		.BarFill {
+			background: green;
+			height: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div ng-controller="DonationCtrl">
+		<ul>
+			<li ng-repeat="project in projects">
+				<slider project="project" ></slider>
+			</li>
+		</ul>
+		<ul>
+			<li ng-repeat="project in projects">
+				<input type="number" ng-model="project.amount">
+				<progress-bar project="project" ></progress-bar>
+			</li>
+		</ul>
+	</div>
+
+	<script src="vendor/powerange/powerange.js"></script>
+	<script src="vendor/angular.js"></script>
+	<script src="js/slider.js"></script>
+</body>
+</html>
