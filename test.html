@@ -7,36 +7,52 @@
 	<link rel="stylesheet" href="vendor/powerange/powerange.css">
 	<style>
 		body {
+			font-family: 'arial' sans-serif;
 			margin: 50px;
 		}
 
+		li {width: 15%; float: left; height: 200px; background-color: #EEE; padding: 20px;}
+
 		li + li {
-			margin-top: 50px;
+			margin-left: 20px;
 		}
 
-		.Bar {
-			background: #eee;
+		.bar {
+			background: #FFF;
 		}
 
-		.BarFill {
+		.barFill {
 			background: green;
 			height: 5px;
 		}
+
+		.range-quantity {background-color: green;}
+
+		#donate {width: 50%; margin: 50px auto;}
+
+		#projects ul {list-style-type: none;}
+		#projects h2 {text-align: center;}
 	</style>
 </head>
 <body>
 	<div ng-controller="DonationCtrl">
-		<ul>
-			<li ng-repeat="project in projects">
-				<slider project="project" ></slider>
-			</li>
-		</ul>
-		<ul>
-			<li ng-repeat="project in projects">
-				<input type="number" ng-model="project.amount">
-				<progress-bar project="project" ></progress-bar>
-			</li>
-		</ul>
+		<div id="donate">
+			<h1>Donation:</h1>
+			<!--<input type="text" class="js-range">-->
+			<slider></slider>
+		</div>
+		<div id="projects">
+			<h2>Projects</h2>
+			<ul>
+				<li ng-repeat="project in projects">
+					<h3>{{project.name}}</h3>
+					<!--<input type="number" ng-model="project.raised">-->
+					<p>Raised so far: {{project.raised | currency}}</p>
+					<p>Target: {{project.target | currency}}</p>
+					<progress-bar project="project" ></progress-bar>
+				</li>
+			</ul>
+		</div>
 	</div>
 
 	<script src="vendor/powerange/powerange.js"></script>

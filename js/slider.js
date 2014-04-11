@@ -1,3 +1,6 @@
+var rangeVal = 0;
+var elem = document.querySelector('.js-range');
+
 angular.module('app', [])
 
 .controller('DonationCtrl', function ( $scope ) {
@@ -5,35 +8,72 @@ angular.module('app', [])
 	$scope.projects = [
 		{
 			name: 'Rainwater Harvesting Tanks',
-			target: 1000,
-			amount: 0,
-			ration: 0.2
+			target: 10000,
+			raised: 1000,
+			ration: 0.4
 		},
 		{
 			name: 'Girls Secondary School',
-			target: 2000,
-			amount: 500,
-			ration: 0.5
+			target: 17000,
+			raised: 5000,
+			ration: 0.3
+		},
+		{
+			name: 'Agriculture and Environmental Conservation',
+			target: 50000,
+			raised: 2000,
+			ration: 0.2
+		},
+		{
+			name: 'Underprivileged Children Program',
+			target: 23000,
+			raised: 5000,
+			ration: 0.075
+		},
+		{
+			name: 'Food & Seed Store',
+			target: 27000,
+			raised: 5500,
+			ration: 0.025
 		}
 	];
+
+// For Loop to add total raised
+	$scope.totalRaised = function ($scope) {
+		var project = $scope.projects;
+		var totalRaisedAmount = 0;
+		for (i=0; i<project.length; i++) {
+			totalRaisedAmount += project[i].raised;
+			console.log(project[i].name + " has raised : " + project[i].raised);
+			console.log("totalRaisedAmount: " + totalRaisedAmount);
+		}
+		return totalRaisedAmount;
+
+	};
+
+	$scope.totalRaisedAmount = $scope.totalRaised ($scope);
 
 })
 
 .directive('slider', function () {
 	return {
 		restrict: 'E',
-		template: '<input type="text">',
+		template: '<input type="text" class="js-range"/>',
 		replace: true,
-		scope: {
-			project: '='
-		},
-		link: function ( scope, element, attr ) {
-			new Powerange(element[0], {
+		// scope: {
+		// 	project: '='
+		// },
+		link: function ( scope, elem, attr ) {
+			elem = elem[0]
+			new Powerange(elem, {
 				min: 0,
-				max: scope.project.target,
-				start: scope.project.amount || 0,
+				max: 10000,
+				start: scope.totalRaisedAmount || 0,
 				callback: function () {
-					console.log(arguments);
+					//console.log(arguments);
+					rangeVal = elem.value;
+					console.log("rangeVal: " + rangeVal);
+					adjustProgressBar (elem);
 				}
 			});
 		}
@@ -42,18 +82,76 @@ angular.module('app', [])
 })
 
 
+
 .directive('progressBar', function () {
 	return {
 		restrict: 'E',
-		template: '<div class="Bar"><div class="BarFill" style="width:{{ percentage }}%;"></div></div>',
+		template: '<div class="bar"><div class="barFill" style="width:{{ percentage }}%;"></div></div>',
 		replace: true,
 		scope: {
 			project: '='
 		},
 		link: function ( scope, element, attr ) {
-			scope.$watch('project.amount', function () {
-				scope.percentage = scope.project.amount / scope.project.target * 100;
+			scope.$watch('project.raised', function () {
+				// scope.percentage = scope.project.raised / scope.project.target * 100;
+				var ration = rangeVal * scope.project.ration
+				console.log("Ration for " + scope.project.name + " : " + ration);
+				scope.percentage = (ration + scope.project.raised) / scope.project.target * 100
 			});
 		}
 	};
 });
+
+
+/*
+var elem = document.querySelector('.js-range');
+var init = new Powerange(elem, {
+				min: 0,
+				max: 100,
+				start: 0,
+				callback: function () {
+					rangeVal = elem.value;
+					adjustProgress ();
+
+				}
+			});
+
+*/
+
+// Original 'adjust progress bars'
+// function adjustProgressBar (elem) {
+// 	var barFills = document.querySelectorAll('.barFill');
+// 	for (i=0; i<barFills.length; i++) {
+// 	  	barFills[i].style.width = elem.value / 100 + "%";
+// 	};
+//   console.log("elem.value: " + elem.value);
+//   console.log("width: " + elem.value / 100 + "%");
+// }
+
+
+// 'adjust progress bars'
+function adjustProgressBar (scope, elem) {
+	var barFills = document.querySelectorAll('.barFill');
+	for (i=0; i<barFills.length; i++) {
+		barFills[i].style.width = scope.project[i].raised + rangeVal * scope.project[i].ration;
+	  	// barFills[i].style.width = elem.value / 100 + "%";
+	};
+}
+
+
+
+// // adjust progress bars
+// function adjustProgressBar (scope, elem) {
+// 	var barFills = document.querySelectorAll('.barFill');
+// 	for (i=0; i<barFills.length; i++) {
+// 		scope.project.raised = scope.project.raised + rangeVal * scope.project.ration;
+// 	};
+
+// 	// var barFills = document.querySelectorAll('.barFill');
+// 	// for (i=0; i<barFills.length; i++) {
+// 	//   	barFills[i].style.width = elem.value / 100 + "%";
+// 	// };
+//   // console.log("elem.value: " + elem.value);
+//   // console.log("width: " + elem.value / 100 + "%");
+// }
+
