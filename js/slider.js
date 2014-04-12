@@ -73,7 +73,6 @@ angular.module('app', [])
 					//console.log(arguments);
 					rangeVal = elem.value;
 					console.log("rangeVal: " + rangeVal);
-					adjustProgressBar (elem);
 				}
 			});
 		}
