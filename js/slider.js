@@ -1,5 +1,5 @@
-var rangeVal = 0;
-var elem = document.querySelector('.js-range');
+// var rangeVal = 0;
+// var elem = document.querySelector('.js-range');
 
 angular.module('app', [])
 
@@ -38,27 +38,31 @@ angular.module('app', [])
 		}
 	];
 
-// For Loop to add total raised
-	$scope.totalRaised = function ($scope) {
-		var project = $scope.projects;
-		var totalRaisedAmount = 0;
-		for (i=0; i<project.length; i++) {
-			totalRaisedAmount += project[i].raised;
-			console.log(project[i].name + " has raised : " + project[i].raised);
-			console.log("totalRaisedAmount: " + totalRaisedAmount);
-		}
-		return totalRaisedAmount;
 
-	};
+	// Starting donation at 0
+	$scope.preview = {donation: 0};
 
-	$scope.totalRaisedAmount = $scope.totalRaised ($scope);
+// 	// For Loop to add total raised
+// 	$scope.totalRaised = function ($scope) {
+// 		var project = $scope.projects;
+// 		var totalRaisedAmount = 0;
+// 		for (i=0; i<project.length; i++) {
+// 			totalRaisedAmount += project[i].raised;
+// 			console.log(project[i].name + " has raised : " + project[i].raised);
+// 			console.log("totalRaisedAmount: " + totalRaisedAmount);
+// 		}
+// 		return totalRaisedAmount;
+
+// 	};
 
 })
+
+
 
 .directive('slider', function () {
 	return {
 		restrict: 'E',
-		template: '<input type="text" class="js-range"/>',
+		template: '<input type="text" class="js-range" ng-model="preview.donation"/>',
 		replace: true,
 		// scope: {
 		// 	project: '='
@@ -68,11 +72,14 @@ angular.module('app', [])
 			new Powerange(elem, {
 				min: 0,
 				max: 10000,
-				start: scope.totalRaisedAmount || 0,
+				start: /*scope.totalRaisedAmount || */ scope.preview.donation || 0,
 				callback: function () {
 					//console.log(arguments);
-					rangeVal = elem.value;
-					console.log("rangeVal: " + rangeVal);
+					// rangeVal = elem.value;
+					// console.log("rangeVal: " + rangeVal);
+					console.log("scope.preview.donation : " + scope.preview.donation);
+					// adjustProgressBar (elem);
+
 				}
 			});
 		}
@@ -87,18 +94,16 @@ angular.module('app', [])
 		restrict: 'E',
 		template: '<div class="bar"><div class="barFill" style="width:{{ percentage }}%;"></div></div>',
 		replace: true,
-		scope: {
-			project: '='
-		},
+		// scope: {
+		// 	project: '='
+		// },
 		link: function ( scope, element, attr ) {
-			scope.$watch('project.raised', function () {
-				// scope.percentage = scope.project.raised / scope.project.target * 100;
-				var ration = rangeVal * scope.project.ration
+			scope.$watch('preview.donation', function () {
+				console.log("progressBar says scope.preview.donation : " + scope.preview.donation);
+				var ration = scope.preview.donation * scope.project.ration
 				console.log("Ration for " + scope.project.name + " : " + ration);
 				scope.percentage = (ration + scope.project.raised) / scope.project.target * 100
 			});
 		}
 	};
 });
-
-
