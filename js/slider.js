@@ -38,26 +38,9 @@ angular.module('app', [])
 		}
 	];
 
-
 	// Starting donation at 0
 	$scope.preview = {donation: 0};
-
-// 	// For Loop to add total raised
-// 	$scope.totalRaised = function ($scope) {
-// 		var project = $scope.projects;
-// 		var totalRaisedAmount = 0;
-// 		for (i=0; i<project.length; i++) {
-// 			totalRaisedAmount += project[i].raised;
-// 			console.log(project[i].name + " has raised : " + project[i].raised);
-// 			console.log("totalRaisedAmount: " + totalRaisedAmount);
-// 		}
-// 		return totalRaisedAmount;
-
-// 	};
-
 })
-
-
 
 .directive('slider', function () {
 	return {
@@ -72,21 +55,11 @@ angular.module('app', [])
 			new Powerange(elem, {
 				min: 0,
 				max: 10000,
-				start: /*scope.totalRaisedAmount || */ scope.preview.donation || 0,
-				callback: function () {
-					//console.log(arguments);
-					// rangeVal = elem.value;
-					// console.log("rangeVal: " + rangeVal);
-					console.log("scope.preview.donation : " + scope.preview.donation);
-					// adjustProgressBar (elem);
-
-				}
+				start: scope.preview.donation || 0,
 			});
 		}
-
 	};
 })
-
 
 
 .directive('progressBar', function () {
@@ -100,9 +73,11 @@ angular.module('app', [])
 		link: function ( scope, element, attr ) {
 			scope.$watch('preview.donation', function () {
 				console.log("progressBar says scope.preview.donation : " + scope.preview.donation);
-				var ration = scope.preview.donation * scope.project.ration
-				console.log("Ration for " + scope.project.name + " : " + ration);
-				scope.percentage = (ration + scope.project.raised) / scope.project.target * 100
+				// set the project donation
+				scope.project.donation = scope.preview.donation * scope.project.ration
+				console.log("scope.project.donation for " + scope.project.name + " : " + scope.project.donation);
+				// set the project bar fill widths
+				scope.percentage = (scope.project.donation + scope.project.raised) / scope.project.target * 100
 			});
 		}
 	};
