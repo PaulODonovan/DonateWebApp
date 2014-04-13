@@ -42,6 +42,32 @@ angular.module('app', [])
 	$scope.preview = {donation: 0};
 })
 
+
+.directive('spinner', function () {
+	return {
+		restrict: 'E',
+		template: '<span id="spin"> €<input type="number" ng-model="preview.donation" value="{{preview.donation}}" max="10000" min="0" step="5"></span>',
+		replace: true,
+		// scope: {
+		// 	project: '='
+		// },
+		link: function ( scope, elem, attr ) {
+			scope.$watch('preview.donation', function () {
+				console.log("spinner says scope.preview.donation : " + scope.preview.donation);
+			// 	// set the project donation
+			// 	scope.project.donation = scope.preview.donation * scope.project.ration
+			// 	console.log("scope.project.donation for " + scope.project.name + " : " + scope.project.donation);
+			// 	// set the project bar fill widths
+			// 	scope.percentage = (scope.project.donation + scope.project.raised) / scope.project.target * 100
+			});
+		}
+	};
+})
+
+
+
+
+
 .directive('slider', function () {
 	return {
 		restrict: 'E',

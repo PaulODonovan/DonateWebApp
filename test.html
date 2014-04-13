@@ -31,12 +31,17 @@
 
 		#projects ul {list-style-type: none;}
 		#projects h2 {text-align: center;}
+
+		#donate h1 {text-align: center;}
+
+		span#spin input {font-size: 1em; width: 8em; font-weight: bold; margin-left: .2em;}
 	</style>
 </head>
 <body>
 	<div ng-controller="DonationCtrl">
 		<div id="donate">
-			<h1>Donation: {{preview.donation | currency: "€"}}</h1>
+
+			<h1>Donation:<spinner></spinner></h1>
 			<slider></slider>
 		</div>
 		<div id="projects">
