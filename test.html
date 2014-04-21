@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="vendor/powerange/powerange.css">
 	<style>
 		body {
-			font-family: 'arial' sans-serif;
+			font-family: Arial, Sans-Serif;
 			margin: 50px;
 		}
 
@@ -37,14 +37,17 @@
 		input#spinner {font-size: 1em; width: 8em; font-weight: bold; margin-left: .2em;}
 
 		.range-max:before, .range-min:before {content: "€";}
+
+
+		.range-quantity {max-width: 100%;}
 	</style>
 </head>
 <body>
 	<div ng-controller="DonationCtrl">
 		<div id="donate">
 
-			<h1>Donation:<spinner></spinner></h1>
-			<slider></slider>
+			<h1>Donation:<spinner amount="amount"></spinner></h1>
+			<slider amount="amount"></slider>
 		</div>
 		<div id="projects">
 			<h2>Projects</h2>
@@ -53,7 +56,7 @@
 					<h3>{{project.name}}</h3>
 					<p>Raised so far: {{project.raised | currency: "€"}}</p>
 					<p>Target: {{project.target | currency: "€"}}</p>
-					<p>Your donation: {{preview.donation * project.ration  | currency: "€"}}</p>
+					<p>Your donation: {{amount * project.ration  | currency: "€"}}</p>
 					<progress-bar project="project" ></progress-bar>
 				</li>
 			</ul>

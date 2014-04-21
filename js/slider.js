@@ -1,5 +1,6 @@
 // var rangeVal = 0;
 // var elem = document.querySelector('.js-range');
+var sliderVal = 0;
 
 angular.module('app', [])
 
@@ -39,53 +40,61 @@ angular.module('app', [])
 	];
 
 	// Starting donation at 0
-	$scope.preview = {donation: 0};
+	$scope.amount = 0;
 })
+
 
 
 .directive('spinner', function () {
 	return {
 		restrict: 'E',
-		template: '<span> €<input id="spinner" type="number" ng-model="preview.donation" value="{{preview.donation}}" max="10000" min="0" step="5"></span>',
+		template: '<span> €<input id="spinner" type="number" ng-model="amount" max="10000" min="0" step="5"></span>',
 		replace: true,
+		scope: {
+	      amount: '='
+	    },
 		link: function ( scope, elem, attr ) {
-			scope.$watch('preview.donation', function () {
-				console.log("spinner says scope.preview.donation : " + scope.preview.donation);
+			scope.$watch('amount', function (newVal, oldVal) {
+				console.log("spinner says scope.amount : " + scope.amount);
 
 				// This is to update the slider. There is a bug where changing the slider after the spinner causes a jump, probably to do with how the powerange slider calculates it's css.
-				var spinnerVal = document.getElementById('spinner').value;
-				var newCss = spinnerVal / 100 + "%";
-				console.log("spinnerVal :" + spinnerVal);
+				// var spinnerVal = document.getElementById('spinner').value;
+				var newCss = sliderVal / 100 + "%";
+				// console.log("spinnerVal :" + spinnerVal);
 				document.querySelector('.range-quantity').style.width = newCss;
 				document.querySelector('.range-handle').style.left = newCss;
+				document.getElementById('spinner').value = scope.amount;
 			});
 		}
 	};
 })
 
 
-
-
-
 .directive('slider', function () {
 	return {
 		restrict: 'E',
-		template: '<input type="text" class="js-range" ng-model="preview.donation"/>',
+		template: '<input type="text" class="js-range" ng-model="amount"/>',
 		replace: true,
+		scope: {
+	      amount: '='
+	    },
 		link: function ( scope, elem, attr ) {
 			elem = elem[0]
 			new Powerange(elem, {
 				min: 0,
 				max: 10000,
-				start: scope.preview.donation || 0,
+				start: 0,
 				//hideRange: true
 			});
 
-			scope.$watch('preview.donation', function () {
+			scope.$watch('amount', function (newVal, oldVal) {
 				//elem.value = scope.preview.donation;
-				console.log("slider says scope.preview.donation : " + scope.preview.donation);
+				console.log("slider says scope.amount : " + scope.amount);
 				console.log(" slider says elem.value: " + elem.value);
-				document.getElementById('spinner').value = elem.value;
+				// document.getElementById('spinner').value = elem.value;
+
+				sliderVal = newVal;
+				console.log("sliderVal :" + sliderVal);
 			});
 		}
 	};
@@ -98,18 +107,13 @@ angular.module('app', [])
 		template: '<div class="bar"><div class="barFill" style="width:{{ percentage }}%;"></div></div>',
 		replace: true,
 		link: function ( scope, element, attr ) {
-			scope.$watch('preview.donation', function () {
-				console.log("progressBar says scope.preview.donation : " + scope.preview.donation);
+			scope.$watch('amount', function () {
 				// set the project donation
-				scope.project.donation = scope.preview.donation * scope.project.ration
-				console.log("scope.project.donation for " + scope.project.name + " : " + scope.project.donation);
+				scope.project.donation = scope.amount * scope.project.ration;
+				console.log("project.donation for " + scope.project.name + " : " + scope.project.donation);
 				// set the project bar fill widths
 				scope.percentage = (scope.project.donation + scope.project.raised) / scope.project.target * 100
 			});
 		}
 	};
 });
-
-
-
-
