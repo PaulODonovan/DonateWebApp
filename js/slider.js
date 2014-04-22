@@ -1,4 +1,4 @@
-angular.module('app', [])
+angular.module('app', ['directive.slider', ])
 
 .controller('DonationCtrl', function ( $scope ) {
 
@@ -17,8 +17,10 @@ angular.module('app', [])
 		}
 	];
 
-})
+});
 
+
+angular.module('directive.slider')
 .directive('slider', function () {
 	return {
 		restrict: 'E',
@@ -39,9 +41,10 @@ angular.module('app', [])
 		}
 
 	};
-})
+});
 
 
+angular.module('directive.progressbar')
 .directive('progressBar', function () {
 	return {
 		restrict: 'E',
