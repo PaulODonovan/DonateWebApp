@@ -2,8 +2,7 @@
 // var elem = document.querySelector('.js-range');
 var sliderVal = 0;
 
-angular.module('app', [])
-
+angular.module('app', ['directive.spinner', 'directive.slider', 'directive.progressbar'])
 .controller('DonationCtrl', function ( $scope ) {
 
 	$scope.projects = [
@@ -41,10 +40,10 @@ angular.module('app', [])
 
 	// Starting donation at 0
 	$scope.amount = 0;
-})
+});
 
 
-
+angular.module('directive.spinner', [])
 .directive('spinner', function () {
 	return {
 		restrict: 'E',
@@ -55,7 +54,7 @@ angular.module('app', [])
 	    },
 		link: function ( scope, elem, attr ) {
 			scope.$watch('amount', function (newVal, oldVal) {
-				console.log("spinner says scope.amount : " + scope.amount);
+				// console.log("spinner says scope.amount : " + scope.amount);
 
 				// This is to update the slider. There is a bug where changing the slider after the spinner causes a jump, probably to do with how the powerange slider calculates it's css.
 				// var spinnerVal = document.getElementById('spinner').value;
@@ -67,9 +66,10 @@ angular.module('app', [])
 			});
 		}
 	};
-})
+});
 
 
+angular.module('directive.slider', [])
 .directive('slider', function () {
 	return {
 		restrict: 'E',
@@ -78,35 +78,42 @@ angular.module('app', [])
 		scope: {
 	      amount: '='
 	    },
-		link: function ( scope, elem, attr ) {
-			elem = elem[0]
-			new Powerange(elem, {
-				min: 0,
-				max: 10000,
-				start: 0,
+		link: function ( scope, element, attr ) {
+			elem = element[0]
+			// new Powerange(elem, {
+				// min: 0,
+				// max: 10000,
+				// start: 0,
 				//hideRange: true
-			});
-
+			// });
 			scope.$watch('amount', function (newVal, oldVal) {
 				//elem.value = scope.preview.donation;
-				console.log("slider says scope.amount : " + scope.amount);
-				console.log(" slider says elem.value: " + elem.value);
+				// console.log("slider says scope.amount : " + scope.amount);
+				// console.log(" slider says elem.value: " + elem.value);
 				// document.getElementById('spinner').value = elem.value;
 
 				sliderVal = newVal;
-				console.log("sliderVal :" + sliderVal);
+				// console.log("sliderVal :" + sliderVal);
 			});
 		}
 	};
 })
 
 
+
+angular.module('directive.progressbar', [])
 .directive('progressBar', function () {
 	return {
 		restrict: 'E',
 		template: '<div class="bar"><div class="barFill" style="width:{{ percentage }}%;"></div></div>',
 		replace: true,
+		scope: {
+			amount: '@',
+			project: '='
+		},
 		link: function ( scope, element, attr ) {
+			console.log(scope.project);
+
 			scope.$watch('amount', function () {
 				// set the project donation
 				scope.project.donation = scope.amount * scope.project.ration;
