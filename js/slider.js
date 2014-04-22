@@ -1,3 +1,4 @@
+
 // var rangeVal = 0;
 // var elem = document.querySelector('.js-range');
 var sliderVal = 0;
@@ -97,8 +98,7 @@ angular.module('directive.slider', [])
 			});
 		}
 	};
-})
-
+});
 
 
 angular.module('directive.progressbar', [])

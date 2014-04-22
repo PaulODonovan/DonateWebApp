@@ -7,10 +7,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+<<<<<<< HEAD
       'vendor/angular.js',
       'vendor/angular-mocks.js',
       'vendor/powerange/powerange.js',
       'js/slider.js',
+=======
+>>>>>>> 40dc066702148240d46d84f6c15203d8e58bc81e
       'test/unit/*.spec.js'
     ],
 

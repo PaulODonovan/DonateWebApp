@@ -1,10 +1,15 @@
 <?xml version="1.0"?>
 <testsuites>
+<<<<<<< HEAD
   <testsuite name="Chrome 34.0.1847 (Mac OS X 10.9.2)" package="" timestamp="2014-04-22T14:42:52" id="0" hostname="Zuse-1">
+=======
+  <testsuite name="Chrome 34.0.1847 (Mac OS X 10.9.2)" package="" timestamp="2014-04-22T13:06:45" id="0" hostname="Zuse-1">
+>>>>>>> 40dc066702148240d46d84f6c15203d8e58bc81e
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36"/>
     </properties>
   </testsuite>
+<<<<<<< HEAD
   <testsuite name="Chrome 34.0.1847 (Mac OS X 10.9.2)" package="" timestamp="2014-04-22T14:42:52" id="0" hostname="Zuse-1" tests="2" errors="0" failures="0" time="0.025">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36"/>
@@ -14,6 +19,14 @@
     <system-out><![CDATA[Chrome 34.0.1847 (Mac OS X 10.9.2) LOG: Object{name: 'Rainwater Harvesting Tanks', target: 10000, raised: 1000, ration: 0.4}
 ,Chrome 34.0.1847 (Mac OS X 10.9.2) LOG: 'project.donation for Rainwater Harvesting Tanks : 200'
 ,Chrome 34.0.1847 (Mac OS X 10.9.2) LOG: 'amount', '500'
+=======
+  <testsuite name="Chrome 34.0.1847 (Mac OS X 10.9.2)" package="" timestamp="2014-04-22T13:06:45" id="0" hostname="Zuse-1" tests="1" errors="0" failures="0" time="0.012">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36"/>
+    </properties>
+    <testcase name="should do y when x" time="0.012" classname="Chrome 34.0.1847 (Mac OS X 10.9.2).Slider"/>
+    <system-out><![CDATA[Chrome 34.0.1847 (Mac OS X 10.9.2) LOG: 'Hello Paul!'
+>>>>>>> 40dc066702148240d46d84f6c15203d8e58bc81e
 
 ]]></system-out>
     <system-err/>

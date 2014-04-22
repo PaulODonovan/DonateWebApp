@@ -1,4 +1,5 @@
 describe('Slider', function () {
+<<<<<<< HEAD
 	var $rootScope, $compile, $scope, element;
 
 	beforeEach(module('directive.slider'));
@@ -30,4 +31,13 @@ describe('Slider', function () {
 		$scope.$digest();
 		expect( element.isolateScope().amount ).toEqual( element.scope().number );
 	});
+=======
+
+	it('should do y when x', function () {
+
+		expect(true).toEqual(true);
+		console.log("Hello Paul!");
+	});
+
+>>>>>>> 40dc066702148240d46d84f6c15203d8e58bc81e
 });
