@@ -1,33 +1,31 @@
 <?xml version="1.0"?>
 <testsuites>
-<<<<<<< HEAD
-  <testsuite name="Chrome 34.0.1847 (Mac OS X 10.9.2)" package="" timestamp="2014-04-22T14:42:52" id="0" hostname="Zuse-1">
-=======
-  <testsuite name="Chrome 34.0.1847 (Mac OS X 10.9.2)" package="" timestamp="2014-04-22T13:06:45" id="0" hostname="Zuse-1">
->>>>>>> 40dc066702148240d46d84f6c15203d8e58bc81e
+  <testsuite name="Chrome 34.0.1847 (Windows 7)" package="" timestamp="2014-05-04T13:32:59" id="0" hostname="Paul-PC">
     <properties>
-      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36"/>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36"/>
     </properties>
   </testsuite>
-<<<<<<< HEAD
-  <testsuite name="Chrome 34.0.1847 (Mac OS X 10.9.2)" package="" timestamp="2014-04-22T14:42:52" id="0" hostname="Zuse-1" tests="2" errors="0" failures="0" time="0.025">
+  <testsuite name="Chrome 34.0.1847 (Windows 7)" package="" timestamp="2014-05-04T13:32:59" id="0" hostname="Paul-PC" tests="1" errors="1" failures="1" time="0.045">
     <properties>
-      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36"/>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36"/>
     </properties>
-    <testcase name="should give a ration, &quot;project.donation&quot; that is a product of &quot;amount&quot; and &quot;project.donation&quot;" time="0.02" classname="Chrome 34.0.1847 (Mac OS X 10.9.2).ProgressBar"/>
-    <testcase name="should bi-directional binding between &quot;amount&quot; and the given variable (&quot;number&quot;)" time="0.005" classname="Chrome 34.0.1847 (Mac OS X 10.9.2).Slider"/>
-    <system-out><![CDATA[Chrome 34.0.1847 (Mac OS X 10.9.2) LOG: Object{name: 'Rainwater Harvesting Tanks', target: 10000, raised: 1000, ration: 0.4}
-,Chrome 34.0.1847 (Mac OS X 10.9.2) LOG: 'project.donation for Rainwater Harvesting Tanks : 200'
-,Chrome 34.0.1847 (Mac OS X 10.9.2) LOG: 'amount', '500'
-=======
-  <testsuite name="Chrome 34.0.1847 (Mac OS X 10.9.2)" package="" timestamp="2014-04-22T13:06:45" id="0" hostname="Zuse-1" tests="1" errors="0" failures="0" time="0.012">
-    <properties>
-      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36"/>
-    </properties>
-    <testcase name="should do y when x" time="0.012" classname="Chrome 34.0.1847 (Mac OS X 10.9.2).Slider"/>
-    <system-out><![CDATA[Chrome 34.0.1847 (Mac OS X 10.9.2) LOG: 'Hello Paul!'
->>>>>>> 40dc066702148240d46d84f6c15203d8e58bc81e
-
+    <testcase name="should bi-directional binding between &quot;amount&quot; and the given variable (&quot;number&quot;)" time="0.045" classname="Chrome 34.0.1847 (Windows 7).Slider">
+      <failure type="">ReferenceError: spinner is not defined
+    at Object.fn (C:/wamp/www/MPS/DonateWebApp-master/js/slider.js:91:5)
+    at Scope.$digest (C:/wamp/www/MPS/DonateWebApp-master/vendor/angular.js:12031:29)
+    at null.&lt;anonymous&gt; (C:/wamp/www/MPS/DonateWebApp-master/test/unit/slider.spec.js:21:10)
+    at Object.invoke (C:/wamp/www/MPS/DonateWebApp-master/vendor/angular.js:3805:17)
+    at workFn (C:/wamp/www/MPS/DonateWebApp-master/vendor/angular-mocks.js:2147:20)
+Error: Declaration Location
+    at window.inject.angular.mock.inject (C:/wamp/www/MPS/DonateWebApp-master/vendor/angular-mocks.js:2132:25)
+    at null.&lt;anonymous&gt; (C:/wamp/www/MPS/DonateWebApp-master/test/unit/slider.spec.js:8:13)
+    at C:/wamp/www/MPS/DonateWebApp-master/test/unit/slider.spec.js:1:1
+</failure>
+      <failure type="">TypeError: undefined is not a function
+    at null.&lt;anonymous&gt; (C:/wamp/www/MPS/DonateWebApp-master/test/unit/slider.spec.js:26:70)
+</failure>
+    </testcase>
+    <system-out><![CDATA[
 ]]></system-out>
     <system-err/>
   </testsuite>

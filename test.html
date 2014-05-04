@@ -3,50 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Test Project</title>
-	<link rel="stylesheet" href="vendor/powerange/powerange.css">
+	<link rel="stylesheet" href="css/css.css">
+	<link rel="stylesheet" href="css/range.css">
 	<style>
-		body {
-			font-family: Arial, Sans-Serif;
-			margin: 50px;
-		}
-
-		li {width: 15%; float: left; height: auto; background-color: #EEE; padding: 20px;}
-
-		li + li {
-			margin-left: 20px;
-		}
-
-		.bar {
-			background: #FFF;
-		}
-
-		.barFill {
-			background: green;
-			height: 5px;
-		}
-
-		.range-quantity {background-color: green;}
-
-		#donate {width: 50%; margin: 50px auto;}
-
-		#projects ul {list-style-type: none;}
-		#projects h2 {text-align: center;}
-
-		#donate h1 {text-align: center;}
-
-		input#spinner {font-size: 1em; width: 8em; font-weight: bold; margin-left: .2em;}
-
-		.range-max:before, .range-min:before {content: "€";}
-
-
-		.range-quantity {max-width: 100%;}
 	</style>
 </head>
 <body>
 	<div ng-controller="DonationCtrl">
 		<div id="donate">
 
-			<h1>Donation:<spinner amount="amount"></spinner></h1>
+			<h1>Donation:<span> €</span><spinner amount="amount"></spinner></h1>
 			<slider amount="amount"></slider>
 		</div>
 		<div id="projects">

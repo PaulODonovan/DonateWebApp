@@ -1,0 +1,56 @@
+input[type='range'] {
+	-webkit-appearance: none;
+	border-radius: 5px;
+	box-shadow: inset 0 0 5px #CCC;
+	background-color: #DDD;
+	height: 10px;
+	vertical-align: middle;
+}
+input[type='range']::-moz-range-track {
+	-moz-appearance: none;
+	border-radius: 5px;
+	box-shadow: inset 0 0 5px #CCC;
+	background-color: #DDD;
+	height: 10px;
+}
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none !important;
+	border-radius: 20px;
+	background-color: #FFF;
+	/*box-shadow:inset 0 0 10px rgba(000,000,000,0.5);*/
+	border: 1px solid #999;
+	height: 40px;
+	width: 40px;
+}
+input[type='range']::-moz-range-thumb {
+	-moz-appearance: none;
+	border-radius: 20px;
+	background-color: #FFF;
+	/*box-shadow:inset 0 0 10px rgba(000,000,000,0.5);*/
+	border: 1px solid #999;
+	height: 40px;
+	width: 40px;
+
+}
+
+
+
+/* Turn off the border on focus*/
+input[type='range'], 
+input[type='range']:focus, 
+input[type='range']:active, 
+input[type='range']::-moz-focus-inner, 
+input[type='range']:-moz-focusring {
+    border: 0;
+    outline: none;
+}
+/*workaround for ff see http://stackoverflow.com/a/21653396/1175238*/
+input[type='range'], input[type='range']:focus, input[type='range']:active, input[type='range']::-moz-focus-inner, input[type='range']:-moz-focusring {
+border: 1px solid white;
+outline: 1px solid white;
+/*outline-offset: -1px;*/
+}
+input:focus{
+    outline: 0;
+}
+

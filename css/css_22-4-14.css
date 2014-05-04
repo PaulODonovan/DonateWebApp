@@ -1,0 +1,139 @@
+﻿
+
+html body {font-size: 100%;}
+
+body {
+font-family: 'Trebuchet MS', Helvetica, Arial, Verdana, sans-serif;
+}
+
+h2 {margin-bottom: 5px;}
+
+#donate {
+  position: relative;
+  margin: 0 auto;
+  width: 95%;
+}
+
+article {width: 17%; float: left; margin: 15px;}
+
+article#controls {width: 100%; }
+article#controls h1, article#controls #spin, article#controls #range {width: 50%; margin: 0 auto;} 
+
+.output {width: auto; font-size: 1em;}
+
+
+
+
+/*Progress Bar CSS*/
+.progressBar{
+    position: relative;
+    padding: 3px;
+	background: #e6e6e6;
+	
+	-moz-border-radius: 12px; /* Firefox */
+	-webkit-border-radius: 12px; /* Webkit */
+	border-radius: 12px;
+}
+
+.progressBarFill {
+
+	font-family: arial;
+	font-size: 3px;
+	color: white;
+	text-align: right;
+	text-shadow: 0px 0px 2px #000;
+	text-indent: 9999px;
+	overflow: hidden;
+	background: #00ff00;
+	border: none;
+	display: block;
+	height: 20px;
+	width: 0%;
+	max-width: 100%;
+	margin: 0;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+}
+
+
+
+/* Range Slider CSS */
+
+
+.range {width: 100%; margin-bottom: 20px;}
+
+.range,
+.rangeFill, .ui-slider-range {
+  background: #e6e6e6;
+  border: none;
+  display: block;
+  height: 20px;
+  margin: 0;
+  -webkit-box-shadow: 0px 2px 2px rgba(255, 255, 255, 0.25), inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 2px 2px rgba(255, 255, 255, 0.25), inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(255, 255, 255, 0.25), inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.rangeFill, .ui-slider-range {
+  background: #00ff00;
+  position: absolute;
+  top: 0;
+  max-width: 100%;
+  width: 0;
+}
+
+
+#donate #range a.ui-slider-handle {
+  background: white;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -10px;
+  
+  
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+}
+
+#donate #range a.ui-slider-handle:after {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;  
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+}
+
+/* Smooth outline with box-shadow: */
+#donate #range a.ui-state-focus {
+outline: none;
+box-shadow: 0px 0px 2pt 2pt rgba(77, 144, 254, .2);
+}
+
+
+/*Special thanks to Andre Ruffert for his rangeslider which inspired this design
+http://andreruffert.github.io/rangeslider.js/
+*/

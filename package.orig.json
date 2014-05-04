@@ -1,0 +1,30 @@
+{
+  "name": "DonateWebApp",
+  "version": "0.0.0",
+  "description": "DonateWebApp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sebald/DonateWebApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebald/DonateWebApp/issues"
+  },
+  "homepage": "https://github.com/sebald/DonateWebApp",
+  "devDependencies": {
+    "karma": "^0.12.9",
+    "grunt-karma": "^0.8.2",
+    "grunt-cli": "^0.1.13",
+    "grunt": "^0.4.4",
+    "karma-jasmine": "^0.1.5",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-chrome-launcher": "^0.1.3",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-commonjs": "0.0.7"
+  }
+}

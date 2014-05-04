@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git://github.com/sebald/DonateWebApp.git"
   },
-  "author": "",
+  "author": "Paul O'Donovan, Sebastian Sebald",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sebald/DonateWebApp/issues"
@@ -26,5 +26,20 @@
     "karma-chrome-launcher": "^0.1.3",
     "karma-junit-reporter": "^0.2.2",
     "karma-commonjs": "0.0.7"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "donate",
+    "web",
+    "app",
+    "slider",
+    "spinner",
+    "number",
+    "input",
+    "progress",
+    "bar",
+    "angular"
+  ]
 }
