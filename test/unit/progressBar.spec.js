@@ -22,7 +22,7 @@ describe('ProgressBar', function () {
 		$scope.$digest();
 	}));
 
-	xit('should give a ration, "project.donation" that is a product of "amount" and "project.donation"', function () {
+	xit('should give a project donation, "project.donation" that is a product of "amount" and "project.ration"', function () {
 		console.log('amount', element.isolateScope().amount);
 		expect( $scope.project.ration ).toEqual( $scope.project.donation / element.isolateScope().amount );
 	});
