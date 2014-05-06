@@ -30,3 +30,4 @@ describe('Spinner', function () {
 		expect( element.isolateScope().amount ).toEqual( element.scope().number );
 	});
 });
+

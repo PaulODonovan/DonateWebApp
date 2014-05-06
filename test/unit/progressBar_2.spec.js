@@ -15,7 +15,7 @@ describe('ProgressBar', function () {
 			ration: 0.4,
 		},
 		$scope.amount = 500;
-
+		
 
 		// Render the element.
 		element = angular.element('<progress-bar amount="{{amount}}" project="project" ></progress-bar>');
@@ -23,9 +23,9 @@ describe('ProgressBar', function () {
 		$scope.$digest();
 	}));
 
-	xit('should give a project donation, "project.donation" that is a product of "amount" and "project.ration"', function () {
-		console.log('amount', element.isolateScope().amount);
-		console.log('isNaN : ', isNaN(element.isolateScope().amount));
-		expect( $scope.project.ration ).toEqual( $scope.project.donation / element.isolateScope().amount );
+	xit('the percentage (width) of the progressBar should equal project.raised plus project.donation divided by project.target', function () {
+		expect( element.isolateScope().percentage / 100 ).toEqual( ($scope.project.raised + $scope.project.donation) / $scope.project.target);
 	});
+
+
 });

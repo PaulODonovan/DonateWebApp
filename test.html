@@ -23,7 +23,7 @@
 					<p>Raised so far: {{project.raised | currency: "€"}}</p>
 					<p>Target: {{project.target | currency: "€"}}</p>
 					<p>Your donation: {{amount * project.ration  | currency: "€"}}</p>
-					<progress-bar project="project" ></progress-bar>
+					<progress-bar amount="{{amount}}"></progress-bar>
 				</li>
 			</ul>
 		</div>
