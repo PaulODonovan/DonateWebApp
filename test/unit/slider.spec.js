@@ -1,7 +1,7 @@
 describe('Slider', function () {
-	var $rootScope, $compile, $scope, element, spinner;
+	var $rootScope, $compile, $scope, element;
 
-	spinner = angular.element('<spinner amount="200"></slider>');
+	// var spinner = angular.element('<spinner amount="200"></spinner>');
 
 	beforeEach(module('directive.slider'));
 	// beforeEach(module('directive.spinner'));
@@ -12,8 +12,7 @@ describe('Slider', function () {
 		// Set up the scope.
 		$scope = $rootScope.$new();
 		$scope.number = "5";
-
-		
+		$scope.spinner = angular.element('<spinner amount="amount"></spinner>');
 
 		// Render the element.
 		element = angular.element('<slider amount="number"></slider>');
